@@ -7,9 +7,11 @@ class Cuadratic:
         self.function = equation
 
     def roots(equation):
+        global a, b, c
+        global discriminant
+        global sol, sol1, sol2
 
         sp_equation = equation.split(' ')
-        global a, b, c
 
         if len(sp_equation[0]) == 3 and len(sp_equation[1]) > 2:
             a = 1
@@ -31,16 +33,13 @@ class Cuadratic:
             b = int(sp_equation[1][:-1])
             c = int(sp_equation[2][:])
 
-        global discriminant
-        global sol, sol1, sol2
-
         discriminant = (b**2) - 4*a*c
 
         if discriminant < 0:
             sol1 = (-b + ((b**2) - 4*a*c)**(1/2)) / (2*a)
-            sol2 = round(sol1, 2)
+            sol2 = sol1
             sol2 = (-b - ((b**2) - 4*a*c)**(1/2)) / (2*a)
-            sol2 = round(sol2)
+            sol2 = sol2
             return '\nLa ecuación tiene soluciones, pero no reales. \nLas soluciones son: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
 
         elif discriminant == 0:
@@ -54,9 +53,10 @@ class Cuadratic:
             sol2 = (-b - ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol2 = round(sol2, 2 )
             return '\nLa ecuación tiene dos soluciones reales.\nLas soluciones son: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
-
-
+    
     def vertex(equation):
+        global coord1, coord2
+
         coord1 = -b / (2*a)
         coord2 = a*coord1**2 + b*coord1 + c
         coord1 = round(coord1, 2)
@@ -65,9 +65,11 @@ class Cuadratic:
 
     def saxis(equation):
 
+        global s_axis
+
         if discriminant < 0:
             s_axis = (sol1+sol2)/2
-            s_axis = round(s_axis, 2)
+            s_axis = s_axis
             return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)   
         
         elif discriminant == 0:
@@ -79,8 +81,38 @@ class Cuadratic:
             s_axis = (sol1+sol2)/2
             s_axis = round(s_axis, 2)
             return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)
+        
+    def plot(equation, nvalue = -12, pvalue = 12):
+        fig, ax = plt.subplots(figsize = (10, 5), dpi = 136)
+        x = np.linspace(nvalue, pvalue, 100)
+        y = a*x**2+b*x+c
 
-eq = '3x^2 +5x -10'
+        ax.grid(True)
+        ax.set_xlabel('$x$')
+        ax.set_ylabel('$y$')
+        ax.set_title('Graph of ${eq}$'.format(eq = equation))
+
+        plt.axhline(y = 0, color = 'r', linestyle = '--')
+        plt.axvline(x = 0, color = 'r', linestyle = '--')
+        ax.plot(x, y)
+
+        if discriminant < 0:
+            plt.plot(coord1, coord2, marker = 'o', markersize = 5, color = 'black', label = 'Vertex: ({coord1}, {coord2})'.format(coord1 = coord1, coord2 = coord2))
+        
+        elif discriminant == 0:
+            plt.plot(sol, 0, marker = 'o', markersize = 5, color = 'black', label ='Solution: {sol1}'.format(sol1 = sol1))
+            plt.plot(coord1, coord2, marker = 'o', markersize = 5, color = 'black', label = 'Vertex: ({coord1}, {coord2})'.format(coord1 = coord1, coord2 = coord2))
+
+        else:
+            plt.plot(sol1, 0, marker = 'o', markersize = 5, color = 'black', label ='Solution 1: {sol1}'.format(sol1 = sol1))
+            plt.plot(sol2, 0, marker = 'o', markersize = 5, color = 'black', label ='Solution 2: {sol2}'.format(sol2 = sol2))
+            plt.plot(coord1, coord2, marker = 'o', markersize = 5, color = 'black', label = 'Vertex: ({coord1}, {coord2})'.format(coord1 = coord1, coord2 = coord2))
+
+        plt.legend()
+        plt.show()
+
+eq = '3x^2 -4x +10'
 print(Cuadratic.roots(eq))
 print(Cuadratic.vertex(eq))
 print(Cuadratic.saxis(eq))
+print(Cuadratic.plot(eq))
