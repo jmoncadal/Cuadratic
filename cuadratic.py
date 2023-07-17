@@ -1,7 +1,4 @@
-
-# I hope this works.
-
-class Quadratic:
+class Cuadratic:
 
     def __init__(self, equation):
         self.function = equation
@@ -81,6 +78,6 @@ class Quadratic:
             return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)
 
 eq = '3x^2 -3x -10'
-print(Quadratic.roots(eq))
-print(Quadratic.vertex(eq))
-print(Quadratic.saxis(eq))
+print(Cuadratic.roots(eq))
+print(Cuadratic.vertex(eq))
+print(Cuadratic.saxis(eq))
