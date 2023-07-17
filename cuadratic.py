@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 class Cuadratic:
 
     def __init__(self, equation):
@@ -77,7 +80,7 @@ class Cuadratic:
             s_axis = round(s_axis, 2)
             return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)
 
-eq = '3x^2 -3x -10'
+eq = '3x^2 +5x -10'
 print(Cuadratic.roots(eq))
 print(Cuadratic.vertex(eq))
 print(Cuadratic.saxis(eq))
