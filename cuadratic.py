@@ -1,3 +1,6 @@
+
+# I hope this works.
+
 class Quadratic:
 
     def __init__(self, equation):
