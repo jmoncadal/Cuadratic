@@ -40,7 +40,7 @@ class Quadratic:
             sol2 = sol1
             sol2 = (-b - ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol2 = sol2
-            return '\nThe equation has no real solutions. \nThe imaginary solutions are: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
+            return '\nThe equation has no real solutions.\nThe imaginary solutions are: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
 
         elif discriminant == 0:
             sol = (-b + ((b**2) - 4*a*c)**(1/2)) / (2*a)
