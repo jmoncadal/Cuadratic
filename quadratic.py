@@ -40,19 +40,19 @@ class Quadratic:
             sol2 = sol1
             sol2 = (-b - ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol2 = sol2
-            return '\nLa ecuación tiene soluciones, pero no reales. \nLas soluciones son: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
+            return '\nThe equation has no real solutions. \nThe imaginary solutions are: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
 
         elif discriminant == 0:
             sol = (-b + ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol = round(sol, 3)
-            return '\nLa ecuación tiene una sola solución real.\nLa solución es: {solucion}\n'.format(solucion = sol)
+            return '\nThe equation has one solution.\nThe solution is: {solucion}\n'.format(solucion = sol)
             
         else:
             sol1 = (-b + ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol1 = round(sol1, 3)
             sol2 = (-b - ((b**2) - 4*a*c)**(1/2)) / (2*a)
             sol2 = round(sol2, 3)
-            return '\nLa ecuación tiene dos soluciones reales.\nLas soluciones son: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
+            return '\nThe equation has two solutions.\nThe solutions are: {sol1} y {sol2}\n'.format(sol1 = sol1, sol2 = sol2)
     
     def vertex(equation):
         global coord1, coord2
@@ -61,7 +61,7 @@ class Quadratic:
         coord2 = a*coord1**2 + b*coord1 + c
         coord1 = round(coord1, 3)
         coord2 = round(coord2, 3)
-        return '\nEl vértice de la ecuación es: ({x}, {y})\n'.format(x = coord1, y = coord2)
+        return '\nThe vertex of the equation is: ({x}, {y})\n'.format(x = coord1, y = coord2)
 
     def saxis(equation):
 
@@ -70,17 +70,17 @@ class Quadratic:
         if discriminant < 0:
             s_axis = (sol1+sol2)/2
             s_axis = s_axis
-            return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)   
+            return'\nThe symmetry axis of the equation is: x = {s_axis}\n'.format(s_axis = s_axis)   
         
         elif discriminant == 0:
             s_axis = sol
             s_axis = round(s_axis, 3)
-            return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)
+            return'\nThe symmetry axis of the equation is: x = {s_axis}\n'.format(s_axis = s_axis)
         
         else:
             s_axis = (sol1+sol2)/2
             s_axis = round(s_axis, 3)
-            return'\nEl eje de simetría de la ecuación es: x = {s_axis}\n'.format(s_axis = s_axis)
+            return'\nThe symmetry axis of the equation is: x = {s_axis}\n'.format(s_axis = s_axis)
         
     def plot(equation, nvalue = -12, pvalue = 12):
         fig, ax = plt.subplots(figsize = (10, 5), dpi = 136)
